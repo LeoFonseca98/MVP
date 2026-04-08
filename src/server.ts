@@ -6,7 +6,19 @@ import transacaoRoutes from "./routes/transacao.routes";
 const app = express();
 
 app.use(cors({
-  origin: "https://mvp-front-47ap-git-main-leonardo-fonsecas-projects.vercel.app"
+  origin: (origin, callback) => {
+    const allowed = [
+      'https://mvp-front-47ap.vercel.app',
+      'https://mvp-front-47ap-git-main-leonardo-fonsecas-projects.vercel.app',
+      'http://localhost:3000',
+    ];
+    if (!origin || allowed.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
 
 app.use(express.json());
