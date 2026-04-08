@@ -5,11 +5,10 @@ import transacaoRoutes from "./routes/transacao.routes";
 
 const app = express();
 
-// 🟢 Habilita CORS para o frontend
 app.use(cors({
   origin: "https://mvp-front-47ap-git-main-leonardo-fonsecas-projects.vercel.app"
 }));
-app.use(cors());
+
 app.use(express.json());
 
 app.use(obraRoutes);
